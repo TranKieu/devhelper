@@ -1,3 +1,3 @@
 # Command
 
-create prettier : create .prettierrc
+generator prettier : create .prettierrc

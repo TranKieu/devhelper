@@ -7,7 +7,7 @@ import chalk from 'chalk';
 import { createPrettier } from './commands/prettier.command';
 
 const VERSION = '1.0.0';
-const NAME = 'create';
+const NAME = 'generator';
 
 const COMMANDS = {
   prettier: 'prettier'

@@ -10,7 +10,7 @@
     "cp:templates": "shx cp -R src/templates bin/"
   },
   "bin": {
-    "create": "./bin/index.js"
+    "generator": "./bin/index.js"
   },
   "repository": {
     "type": "git",
