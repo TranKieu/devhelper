@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "removeComments": true,
+    "outDir": "./bin",
+    "rootDir": "./src",
+    "strict": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["es2017", "es7", "dom"],
+    "typeRoots": ["node_modules/@types"]
+  },
+  "exclude": ["node_modules", "./src/templates", "./bin"]
+}

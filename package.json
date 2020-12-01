@@ -1,0 +1,34 @@
+{
+  "name": "devhelper",
+  "version": "1.0.0",
+  "description": "DevHelper Tool",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": " npm run clean && npm run compiler && npm run cp:templates ",
+    "compiler": "tsc -p .",
+    "clean": "shx rm -rf bin",
+    "cp:templates": "shx cp -R src/templates bin/"
+  },
+  "bin": {
+    "create": "./bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TranKieu/devhelper.git"
+  },
+  "author": "tranvd2010 <tranvd2010@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TranKieu/devhelper/issues"
+  },
+  "homepage": "https://github.com/TranKieu/devhelper#readme",
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/node": "^14.14.10",
+    "shx": "^0.3.3",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "commander": "^6.2.0"
+  }
+}
