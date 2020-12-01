@@ -1,2 +1,3 @@
-# devhelper
-Helper
+# Command
+
+create prettier : create .prettierrc
