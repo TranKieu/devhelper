@@ -5,12 +5,14 @@ import chalk from 'chalk';
 
 // Commands
 import { createPrettier } from './commands/prettier.command';
+import { createBabel } from './commands/babel.command';
 
 const VERSION = '1.0.0';
 const NAME = 'generate';
 
 const COMMANDS = {
-  prettier: 'prettier'
+  prettier: 'prettier',
+  babel: 'babel'
 };
 
 program
@@ -29,6 +31,12 @@ program
   .alias('p')
   .description('Create new .prettierrc File!')
   .action(() => createPrettier());
+
+program
+  .command(COMMANDS.babel)
+  .alias('b')
+  .description('Create new .babelrc File!')
+  .action(() => createBabel());
 
 // parse
 program.parse(process.argv);
