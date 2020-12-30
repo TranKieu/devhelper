@@ -9,7 +9,7 @@ import { createBabel } from './commands/babel.command';
 import { createGitig } from './commands/gitig.command';
 import { createTsConfig } from './commands/tsconfig.command';
 import { createPackage } from './commands/package.command';
-import { InitTs } from './commands/init.commad';
+import { initTs } from './commands/init.commad';
 
 const VERSION = '1.0.0';
 const NAME = 'generate';
@@ -63,7 +63,7 @@ program
   .description(`Create new ${COMMANDS.package.name} File!`)
   .action(() => createPackage(COMMANDS.package.name));
 
-program.command(COMMANDS.init.CM).action(() => InitTs());
+program.command(COMMANDS.init.CM).action(() => initTs());
 // parse
 program.parse(process.argv);
 

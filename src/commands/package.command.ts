@@ -11,14 +11,12 @@ class PackageJson {
     build: '',
     compiler: 'tsc -p .'
   };
-  devDependencies!: {
+  devDependencies: {
     [key: string]: string;
-  };
-  dependencies:
-    | {
-        [key: string]: string;
-      }
-    | undefined;
+  } = {};
+  dependencies: {
+    [key: string]: string;
+  } = {};
 
   author = 'tranvd2010 <tranvd2010@gmail.com>';
   homepage = 'https://trankieu.github.io/';
@@ -38,7 +36,7 @@ export const createPackage = async (fileName: string) => {
   )) as string;
 
   try {
-    await writeFile(fileName, JSON.stringify(packageJson, undefined, 5));
+    await writeFile(fileName, JSON.stringify(packageJson, undefined, 2));
     console.log('\t File %s created succesfully!', chalk.green.bold(fileName));
   } catch (error) {
     console.log(error);

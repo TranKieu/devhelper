@@ -2,7 +2,7 @@ import { createGitig } from './gitig.command';
 import { createPackage } from './package.command';
 import { createPrettier } from './prettier.command';
 
-export const InitTs = async () => {
+export const initTs = () => {
   /**
    * 1. Tạo package.json
    * 2. Tạo tsconfig.json

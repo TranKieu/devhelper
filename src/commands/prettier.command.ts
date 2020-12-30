@@ -16,7 +16,7 @@ export const createPrettier = async (fileName: string) => {
     'node_modules\n' + 'dist\n' + '*.md\n' + '*.css\n' + '*.js\n' + '\n';
 
   try {
-    await writeFile(fileName, JSON.stringify(prettier, undefined, 5));
+    await writeFile(fileName, JSON.stringify(prettier, undefined, 2));
     await writeFile('.prettierignore', prettierig);
     console.log('\t File %s created succesfully!', chalk.green.bold(fileName));
   } catch (error) {

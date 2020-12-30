@@ -20,7 +20,6 @@ export const createTsConfig = async (fileName: string) => {
       experimentalDecorators: true,
       emitDecoratorMetadata: true,
       moduleResolution: 'node',
-      importHelpers: true,
       esModuleInterop: true,
 
       lib: ['es2018', 'dom'],
@@ -30,7 +29,7 @@ export const createTsConfig = async (fileName: string) => {
   };
 
   try {
-    await writeFile(fileName, JSON.stringify(tsconfig, undefined, 5));
+    await writeFile(fileName, JSON.stringify(tsconfig, undefined, 2));
     console.log('\t File %s created succesfully!', chalk.green.bold(fileName));
   } catch (error) {
     console.log(error);

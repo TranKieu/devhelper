@@ -1,18 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
+    "target": "es2015",
+    "module": "es2020",
     "sourceMap": true,
     "removeComments": true,
-    "outDir": "./bin",
+    "outDir": "./dist",
+    "baseUrl": "./",
     "rootDir": "./src",
     "strict": true,
-    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "lib": ["es2017", "es7", "dom"],
+    "lib": ["es2018", "dom"],
     "typeRoots": ["node_modules/@types"]
   },
-  "exclude": ["node_modules", "./src/templates", "./bin"]
+  "exclude": ["node_modules", "./dist"]
 }
