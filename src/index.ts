@@ -6,13 +6,19 @@ import chalk from 'chalk';
 // Commands
 import { createPrettier } from './commands/prettier.command';
 import { createBabel } from './commands/babel.command';
+import { createGitig } from './commands/gitig.command';
+import { createTsConfig } from './commands/tsconfig.command';
+import { createPackage } from './commands/package.command';
 
 const VERSION = '1.0.0';
 const NAME = 'generate';
 
 const COMMANDS = {
-  prettier: { CM: 'prettier', alias: 'p', name: '.prettierrc' },
-  babel: { CM: 'babel', alias: 'b', name: '.babelrc' }
+  prettier: { CM: 'prettier', name: '.prettierrc' },
+  babel: { CM: 'babel', name: '.babelrc' },
+  gitignore: { CM: 'gitig', name: '.gitignore' },
+  tsconfig: { CM: 'tsconfig', name: 'tsconfig.json' },
+  package: { CM: 'package', name: 'package.json' }
 };
 
 program
@@ -28,16 +34,32 @@ program
 // Commands
 program
   .command(COMMANDS.prettier.CM)
-  .alias(COMMANDS.prettier.alias)
+  .alias('p')
   .description(`Create new ${COMMANDS.prettier.name} File!`)
   .action(() => createPrettier(COMMANDS.prettier.name));
 
 program
   .command(COMMANDS.babel.CM)
-  .alias(COMMANDS.babel.alias)
   .description(`Create new ${COMMANDS.babel.name} File!`)
   .action(() => createBabel(COMMANDS.babel.name));
 
+// gitignore
+program
+  .command(COMMANDS.gitignore.CM)
+  .description(`Create new ${COMMANDS.gitignore.name} File!`)
+  .action(() => createGitig(COMMANDS.gitignore.name));
+
+// tsconfig.json
+program
+  .command(COMMANDS.tsconfig.CM)
+  .description(`Create new ${COMMANDS.tsconfig.name} File!`)
+  .action(() => createTsConfig(COMMANDS.tsconfig.name));
+
+// package.json
+program
+  .command(COMMANDS.package.CM)
+  .description(`Create new ${COMMANDS.package.name} File!`)
+  .action(() => createPackage(COMMANDS.package.name));
 // parse
 program.parse(process.argv);
 
@@ -53,9 +75,7 @@ function information() {
   console.log('\n Develope Helper \n');
 
   // Command
-  Object.entries(COMMANDS).forEach(([key, value]) =>
-    console.log(
-      `Commands: \t ${NAME} ${value.CM} | ${value.alias} \t Create new ${value.name} File.\n`
-    )
+  Object.entries(COMMANDS).forEach(([key, { CM, name }]) =>
+    console.log(`Commands: \t ${NAME} ${CM} \t Create new ${name} File.\n`)
   );
 }

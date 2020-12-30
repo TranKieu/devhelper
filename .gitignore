@@ -1,6 +1,7 @@
 package-lock.json
 .vscode/
 node_modules/
-dist/
 .evn
 bin/
+dist/
+dev-serve/

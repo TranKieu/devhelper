@@ -1,7 +1,13 @@
 # Command
 
-generator prettier : create .prettierrc
+generate    prettier       Create new .prettierrc File.
 
-generator babel : create .babelrc
+generate    babel          Create new .babelrc File.
+
+generate    gitig          Create new .gitignore File.
+
+generate    tsconfig       Create new tsconfig.json File.
+
+generate    package        Create new package.json File.
 
 #Todo

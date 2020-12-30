@@ -8,7 +8,7 @@ export const createBabel = async (fileName: string) => {
   };
 
   try {
-    await writeFile('.babelrc', JSON.stringify(babel, undefined, 5));
+    await writeFile(fileName, JSON.stringify(babel, undefined, 5));
     console.log('\t File %s created succesfully!', chalk.green.bold(fileName));
   } catch (error) {
     console.log(error);
