@@ -9,6 +9,7 @@ import { createBabel } from './commands/babel.command';
 import { createGitig } from './commands/gitig.command';
 import { createTsConfig } from './commands/tsconfig.command';
 import { createPackage } from './commands/package.command';
+import { InitTs } from './commands/init.commad';
 
 const VERSION = '1.0.0';
 const NAME = 'generate';
@@ -18,7 +19,8 @@ const COMMANDS = {
   babel: { CM: 'babel', name: '.babelrc' },
   gitignore: { CM: 'gitig', name: '.gitignore' },
   tsconfig: { CM: 'tsconfig', name: 'tsconfig.json' },
-  package: { CM: 'package', name: 'package.json' }
+  package: { CM: 'package', name: 'package.json' },
+  init: { CM: 'init', name: '' }
 };
 
 program
@@ -60,6 +62,8 @@ program
   .command(COMMANDS.package.CM)
   .description(`Create new ${COMMANDS.package.name} File!`)
   .action(() => createPackage(COMMANDS.package.name));
+
+program.command(COMMANDS.init.CM).action(() => InitTs());
 // parse
 program.parse(process.argv);
 
