@@ -8,8 +8,9 @@ class PackageJson {
   main = 'src/index.ts';
 
   scripts = {
-    build: '',
-    compiler: 'tsc -p .'
+    start: 'node dist/index',
+    compiler: 'tsc -p .',
+    dev: 'ts-node-dev --no-notify --respawn --transpile-only src/index'
   };
   devDependencies: {
     [key: string]: string;
@@ -25,14 +26,13 @@ class PackageJson {
 export const createPackage = async (fileName: string) => {
   const packageJson = new PackageJson();
 
-  // lấy dependencies
+  // lấy dependencies: concurrently, nodemon
   //  packageJson.devDependencies[''] = (await lastest('')) as string;
-  packageJson.devDependencies['nodemon'] = (await lastest('nodemon')) as string;
-  packageJson.devDependencies['concurrently'] = (await lastest(
-    'concurrently'
-  )) as string;
   packageJson.devDependencies['typescript'] = (await lastest(
     'typescript'
+  )) as string;
+  packageJson.devDependencies['ts-node-dev'] = (await lastest(
+    'ts-node-dev'
   )) as string;
 
   try {
