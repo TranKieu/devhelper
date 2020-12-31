@@ -1,6 +1,7 @@
 import { createGitig } from './gitig.command';
 import { createPackage } from './package.command';
 import { createPrettier } from './prettier.command';
+import { createTsConfig } from './tsconfig.command';
 
 export const initTs = () => {
   /**
@@ -10,7 +11,7 @@ export const initTs = () => {
    * 4. Tạo gitignore
    */
   createPackage('package.json');
-  createPackage('tsconfig.json');
+  createTsConfig('tsconfig.json');
   createPrettier('.prettierrc');
   createGitig('.gitignore');
 };

@@ -6,7 +6,7 @@ export const createTsConfig = async (fileName: string) => {
   const tsconfig = {
     compilerOptions: {
       target: 'es2015',
-      module: 'es2020',
+      module: 'CommonJS',
       sourceMap: true,
       removeComments: true,
       outDir: './dist',

@@ -1,21 +1,27 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "module": "es2020",
-    "sourceMap": true,
-    "removeComments": true,
-    "outDir": "./dist",
+    "module": "CommonJS",
+
+    "outDir": "./bin",
     "baseUrl": "./",
     "rootDir": "./src",
+
+    "sourceMap": true,
+    "removeComments": true,
+
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "declaration": false,
     "downlevelIteration": true,
+
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+
     "moduleResolution": "node",
     "esModuleInterop": true,
+
     "lib": ["es2018", "dom"],
     "typeRoots": ["node_modules/@types"]
   },

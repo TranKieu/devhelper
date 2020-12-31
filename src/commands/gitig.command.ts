@@ -4,11 +4,11 @@ import { writeFile } from '../utils/file.utils';
 export const createGitig = async (fileName: string) => {
   const gitig =
     'package-lock.json' +
-    '\n .vscode/' +
-    '\n node_modules/ ' +
-    '\n .evn ' +
-    '\n bin/' +
-    '\n dist/' +
+    '\n.vscode/' +
+    '\nnode_modules/ ' +
+    '\n.evn ' +
+    '\nbin/' +
+    '\ndist/' +
     '\n';
 
   try {
