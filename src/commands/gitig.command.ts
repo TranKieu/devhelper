@@ -5,8 +5,9 @@ export const createGitig = async (fileName: string) => {
   const gitig =
     'package-lock.json' +
     '\n.vscode/' +
-    '\nnode_modules/ ' +
-    '\n.evn ' +
+    '\nnode_modules/' +
+    '\n.evn' +
+    '\nenvironment.ts' +
     '\nbin/' +
     '\ndist/' +
     '\n';

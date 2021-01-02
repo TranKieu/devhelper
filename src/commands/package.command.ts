@@ -9,7 +9,7 @@ class PackageJson {
 
   scripts = {
     start: 'node dist/index',
-    compiler: 'tsc -p .',
+    build: 'tsc -p .',
     dev: 'ts-node-dev --no-notify --respawn --transpile-only src/index'
   };
   devDependencies: {
@@ -30,6 +30,9 @@ export const createPackage = async (fileName: string) => {
   //  packageJson.devDependencies[''] = (await lastest('')) as string;
   packageJson.devDependencies['typescript'] = (await lastest(
     'typescript'
+  )) as string;
+  packageJson.devDependencies['@types/node'] = (await lastest(
+    '@types/node'
   )) as string;
   packageJson.devDependencies['ts-node-dev'] = (await lastest(
     'ts-node-dev'
