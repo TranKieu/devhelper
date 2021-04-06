@@ -10,5 +10,9 @@ generate    tsconfig       Create new tsconfig.json File.
 
 generate    package        Create new package.json File.
 
+generate    init           Create backend-Project.
+
+generate    front <project>Create Fronend-Project.
+
 #Todo
 eslint => bo sung package

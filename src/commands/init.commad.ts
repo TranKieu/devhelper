@@ -12,6 +12,6 @@ export const initTs = () => {
    */
   createPackage('package.json');
   createTsConfig('tsconfig.json');
-  createPrettier('.prettierrc');
-  createGitig('.gitignore');
+  createPrettier();
+  createGitig();
 };

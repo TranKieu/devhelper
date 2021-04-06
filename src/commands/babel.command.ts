@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import { writeFile } from '../utils/file.utils';
 
 export const createBabel = async (fileName: string) => {
@@ -9,7 +8,6 @@ export const createBabel = async (fileName: string) => {
 
   try {
     await writeFile(fileName, JSON.stringify(babel, undefined, 2));
-    console.log('\t File %s created succesfully!', chalk.green.bold(fileName));
   } catch (error) {
     console.log(error);
     process.exit(1);

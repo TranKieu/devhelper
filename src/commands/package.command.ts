@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import packageJson from 'package-json';
 import { writeFile } from '../utils/file.utils';
 
@@ -40,7 +39,6 @@ export const createPackage = async (fileName: string) => {
 
   try {
     await writeFile(fileName, JSON.stringify(packageJson, undefined, 2));
-    console.log('\t File %s created succesfully!', chalk.green.bold(fileName));
   } catch (error) {
     console.log(error);
     process.exit(1);

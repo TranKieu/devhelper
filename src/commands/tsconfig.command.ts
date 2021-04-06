@@ -1,5 +1,3 @@
-import chalk from 'chalk';
-
 import { writeFile } from '../utils/file.utils';
 
 export const createTsConfig = async (fileName: string) => {
@@ -30,7 +28,6 @@ export const createTsConfig = async (fileName: string) => {
 
   try {
     await writeFile(fileName, JSON.stringify(tsconfig, undefined, 2));
-    console.log('\t File %s created succesfully!', chalk.green.bold(fileName));
   } catch (error) {
     console.log(error);
     process.exit(1);

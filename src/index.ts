@@ -10,6 +10,7 @@ import { createGitig } from './commands/gitig.command';
 import { createTsConfig } from './commands/tsconfig.command';
 import { createPackage } from './commands/package.command';
 import { initTs } from './commands/init.commad';
+import { frontend } from './commands/frontend.command';
 
 const VERSION = '1.0.0';
 const NAME = 'generate';
@@ -20,7 +21,8 @@ const COMMANDS = {
   gitignore: { CM: 'gitig', name: '.gitignore' },
   tsconfig: { CM: 'tsconfig', name: 'tsconfig.json' },
   package: { CM: 'package', name: 'package.json' },
-  init: { CM: 'init', name: '' }
+  init: { CM: 'init', name: '' },
+  frontend: { CM: 'front <project>', name: 'FrontEnd-Project' }
 };
 
 program
@@ -38,7 +40,7 @@ program
   .command(COMMANDS.prettier.CM)
   .alias('p')
   .description(`Create new ${COMMANDS.prettier.name} File!`)
-  .action(() => createPrettier(COMMANDS.prettier.name));
+  .action(() => createPrettier());
 
 program
   .command(COMMANDS.babel.CM)
@@ -49,7 +51,7 @@ program
 program
   .command(COMMANDS.gitignore.CM)
   .description(`Create new ${COMMANDS.gitignore.name} File!`)
-  .action(() => createGitig(COMMANDS.gitignore.name));
+  .action(() => createGitig());
 
 // tsconfig.json
 program
@@ -63,7 +65,16 @@ program
   .description(`Create new ${COMMANDS.package.name} File!`)
   .action(() => createPackage(COMMANDS.package.name));
 
+// Backend
 program.command(COMMANDS.init.CM).action(() => initTs());
+
+// Frontend
+program
+  .command(COMMANDS.frontend.CM)
+  .alias('p')
+  .description(`Create new ${COMMANDS.frontend.name} File!`)
+  .action((project) => frontend(project));
+
 // parse
 program.parse(process.argv);
 

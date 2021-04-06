@@ -1,7 +1,7 @@
-import chalk from 'chalk';
+import path from 'path';
 import { writeFile } from '../utils/file.utils';
 
-export const createGitig = async (fileName: string) => {
+export const createGitig = async (project?: string) => {
   const gitig =
     'package-lock.json' +
     '\n.vscode/' +
@@ -12,9 +12,12 @@ export const createGitig = async (fileName: string) => {
     '\ndist/' +
     '\n';
 
+  let gitFile = '.gitignore';
+  if (project !== undefined) {
+    gitFile = path.resolve(project, '.gitignore');
+  }
   try {
-    await writeFile(fileName, gitig);
-    console.log('\t File %s created succesfully!', chalk.green.bold(fileName));
+    await writeFile(gitFile, gitig);
   } catch (error) {
     console.log(error);
     process.exit(1);
