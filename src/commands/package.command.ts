@@ -1,4 +1,4 @@
-import packageJson from 'package-json';
+import { lastest } from '../utils/lastversion';
 import { writeFile } from '../utils/file.utils';
 
 class PackageJson {
@@ -11,9 +11,11 @@ class PackageJson {
     build: 'tsc -p .',
     dev: 'ts-node-dev --no-notify --respawn --transpile-only src/index'
   };
+
   devDependencies: {
     [key: string]: string;
   } = {};
+
   dependencies: {
     [key: string]: string;
   } = {};
@@ -43,9 +45,4 @@ export const createPackage = async (fileName: string) => {
     console.log(error);
     process.exit(1);
   }
-};
-
-const lastest = async (packageName: string) => {
-  const { version } = await packageJson(packageName, { version: 'latest' });
-  return version;
 };

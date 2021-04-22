@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <main
+      class="min-h-screen bg-gray-100 text-gray-800 antialiased py-6 flex items-center sm:py-12"
+    >
+      <div class="py-3 sm:w-96 sm:mx-auto text-center">
+        <span class="text-2xl font-light">Login to your account</span>
+        <!-- Form -->
+        <form class="mt-4 bg-white shadow-md rounded-lg text-left">
+          <div class="h-2 bg-indigo-400 rounded-t-md"></div>
+          <div class="px-8 py-6">
+            <label class="block font-semibold">Username or Email</label>
+            <input
+              type="text"
+              placeholder="Email"
+              class="border rounded-md w-full h-5 px-3 py-5 mt-2 focus:outline-none focus:ring-1 focus:ring-indigo-600"
+            />
+            <label class="block mt-3 font-semibold">Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              class="border rounded-md w-full h-5 px-3 py-5 mt-2 focus:outline-none focus:ring-1 focus:ring-indigo-600"
+            />
+            <div class="flex justify-between items-baseline mt-4">
+              <button
+                type="submit"
+                class="bg-indigo-500 text-white py-2 px-6 rounded-md hover:bg-indigo-600"
+              >
+                Login
+              </button>
+              <a href="#" class="text-sm hover:underline">Forgot Password?</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
