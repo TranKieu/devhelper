@@ -2,4 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* @layer components {
+  .class-name {
+    @apply  ;
+  }
+} */

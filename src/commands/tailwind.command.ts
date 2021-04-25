@@ -29,9 +29,7 @@ export const tailwind = async (projectName: string) => {
   packageJson.devDependencies['postcss-cli'] = (await lastest(
     'postcss-cli'
   )) as string;
-  packageJson.devDependencies['cross-env'] = (await lastest(
-    'cross-env'
-  )) as string;
+  packageJson.devDependencies['cssnano'] = (await lastest('cssnano')) as string;
 
   let pkgF = path.resolve(projectName, 'package.json');
 
@@ -47,13 +45,13 @@ export const tailwind = async (projectName: string) => {
 class PackageJson {
   name = 'tailwind';
   version = '1.0.0';
-  description = ';';
+  description = '';
   main = 'public/index.html';
 
   scripts = {
-    build: 'postcss ./src/styles.css -o ./public/css/styles.css',
+    build: 'postcss ./src/styles.css -o ./public/css/styles.css --verbose',
     prod:
-      'cross-env NODE_ENV=production postcss ./src/styles.css -o ./public/css/styles.css'
+      'postcss ./src/styles.css -o ./public/css/styles.css --env production --verbose'
   };
 
   devDependencies: {
