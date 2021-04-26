@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer components {
-  .class-name {
-    @apply  ;
+@layer base {
+  html {
+    height: 100%;
   }
-} */
+}
