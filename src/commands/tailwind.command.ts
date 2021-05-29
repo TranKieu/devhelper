@@ -49,9 +49,8 @@ class PackageJson {
   main = 'public/index.html';
 
   scripts = {
-    build: 'postcss ./src/styles.css -o ./public/css/styles.css --verbose',
-    prod:
-      'postcss ./src/styles.css -o ./public/css/styles.css --env production --verbose'
+    build: 'postcss ./src/tailwind.css -o ./public/css/styles.css --verbose',
+    prod: 'postcss ./src/tailwind.css -o ./public/css/styles.css --env production --verbose'
   };
 
   devDependencies: {
