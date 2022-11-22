@@ -1,18 +1,15 @@
 # Command
 
-generate    prettier       Create new .prettierrc File.
+generate    prettier                Create new .prettierrc File.
 
-generate    babel          Create new .babelrc File.
+generate    babel                   Create new .babelrc File.
 
-generate    gitig          Create new .gitignore File.
+generate    gitig                   Create new .gitignore File.
 
-generate    tsconfig       Create new tsconfig.json File.
+generate    init  <project>         Create TS-Project.
 
-generate    package        Create new package.json File.
+generate    front <project>         Create Fronend-Project.
 
-generate    init           Create backend-Project.
-
-generate    front <project>Create Fronend-Project.
-
+  
 #Todo
 eslint => bo sung package
