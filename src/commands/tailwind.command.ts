@@ -1,9 +1,26 @@
 import chalk from 'chalk';
-import { lastest } from '../utils/lastversion';
 import path from 'path';
-import { copyDir, isExists, writeFile } from '../utils/file.utils';
+import { copyDir, isExists } from '../utils/file.utils';
+import { createPackage } from '../utils/create.package';
+import { createGitig } from './gitig.command';
+import { createPrettier } from './prettier.command';
 
 export const tailwind = async (projectName: string) => {
+  /** package */
+  const main = 'public/index.html';
+  const scripts = {
+    build: 'postcss ./src/tailwind.css -o ./public/css/styles.css --verbose',
+    prod: 'postcss ./src/tailwind.css -o ./public/css/styles.css --env production --verbose'
+  };
+
+  const devDependencies: string[] = [
+    'autoprefixer',
+    'tailwindcss',
+    'postcss-cli',
+    'cssnano'
+  ];
+
+  /** Create Dir */
   if (await isExists(projectName)) {
     console.error(
       chalk.red.bold('Error!'),
@@ -15,52 +32,13 @@ export const tailwind = async (projectName: string) => {
   console.log();
   console.log('\t Create Project: ', chalk.green.bold(projectName));
   console.log('\t ***************\n');
+  /** Copy Template */
   const prjTpl = path.resolve(__dirname, '../templates/tailwind');
   await copyDir(prjTpl, projectName);
 
   // package
-  const packageJson = new PackageJson();
-  packageJson.devDependencies['autoprefixer'] = (await lastest(
-    'autoprefixer'
-  )) as string;
-  packageJson.devDependencies['tailwindcss'] = (await lastest(
-    'tailwindcss'
-  )) as string;
-  packageJson.devDependencies['postcss-cli'] = (await lastest(
-    'postcss-cli'
-  )) as string;
-  packageJson.devDependencies['cssnano'] = (await lastest('cssnano')) as string;
-
-  let pkgF = path.resolve(projectName, 'package.json');
-
-  try {
-    await writeFile(pkgF, JSON.stringify(packageJson, undefined, 2));
-  } catch (error) {
-    console.log(error);
-    process.exit(1);
-  }
+  await createPackage(projectName, main, scripts, devDependencies);
+  await createPrettier(projectName);
+  await createGitig(projectName);
   console.log('\t %s Project ready!\n', chalk.green.bold(projectName));
 };
-
-class PackageJson {
-  name = 'tailwind';
-  version = '1.0.0';
-  description = '';
-  main = 'public/index.html';
-
-  scripts = {
-    build: 'postcss ./src/tailwind.css -o ./public/css/styles.css --verbose',
-    prod: 'postcss ./src/tailwind.css -o ./public/css/styles.css --env production --verbose'
-  };
-
-  devDependencies: {
-    [key: string]: string;
-  } = {};
-  dependencies: {
-    [key: string]: string;
-  } = {};
-
-  author = 'tranvd2010 <tranvd2010@gmail.com>';
-  homepage = 'https://trankieu.github.io/';
-  license = '';
-}

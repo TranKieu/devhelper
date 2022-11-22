@@ -1,32 +1,39 @@
 #!/usr/bin/env node
 
-import program from 'commander';
+import { Command } from 'commander';
 import chalk from 'chalk';
 
 // Commands
 import { createPrettier } from './commands/prettier.command';
-import { createBabel } from './commands/babel.command';
-import { createGitig } from './commands/gitig.command';
-import { createTsConfig } from './commands/tsconfig.command';
-import { createPackage } from './commands/package.command';
 import { initTs } from './commands/init.commad';
 import { frontend } from './commands/frontend.command';
+import { createGitig } from './commands/gitig.command';
 import { tailwind } from './commands/tailwind.command';
 
-const VERSION = '1.0.0';
+/* deprecated */
+// import { createBabel } from './commands/babel.command';
+// import { createPackage } from './commands/package.command';
+// import { createTsConfig } from './commands/tsconfig.command';
+
+const VERSION = '2.0.0';
 const NAME = 'generate';
 
 const COMMANDS = {
   prettier: { CM: 'prettier', name: '.prettierrc' },
-  babel: { CM: 'babel', name: '.babelrc' },
   gitignore: { CM: 'gitig', name: '.gitignore' },
-  tsconfig: { CM: 'tsconfig', name: 'tsconfig.json' },
-  package: { CM: 'package', name: 'package.json' },
-  init: { CM: 'init', name: '' },
+
+  init: { CM: 'init <project>', name: '' },
   frontend: { CM: 'front <project>', name: 'FrontEnd-Project' },
   tailwind: { CM: 'tailwind <project>', name: 'TailwindCSS-Start' }
 };
 
+/**
+ * tsconfig: { CM: 'tsconfig', name: 'tsconfig.json' },
+ * package: { CM: 'package', name: 'package.json' },
+ * babel: { CM: 'babel', name: '.babelrc' },
+ */
+
+const program = new Command();
 program
   .version(VERSION)
   .name(NAME)
@@ -44,38 +51,23 @@ program
   .description(`Create new ${COMMANDS.prettier.name} File!`)
   .action(() => createPrettier());
 
-program
-  .command(COMMANDS.babel.CM)
-  .description(`Create new ${COMMANDS.babel.name} File!`)
-  .action(() => createBabel(COMMANDS.babel.name));
-
 // gitignore
 program
   .command(COMMANDS.gitignore.CM)
   .description(`Create new ${COMMANDS.gitignore.name} File!`)
   .action(() => createGitig());
 
-// tsconfig.json
+// Typescript Project
 program
-  .command(COMMANDS.tsconfig.CM)
-  .description(`Create new ${COMMANDS.tsconfig.name} File!`)
-  .action(() => createTsConfig(COMMANDS.tsconfig.name));
-
-// package.json
-program
-  .command(COMMANDS.package.CM)
-  .description(`Create new ${COMMANDS.package.name} File!`)
-  .action(() => createPackage(COMMANDS.package.name));
-
-// Backend
-program.command(COMMANDS.init.CM).action(() => initTs());
+  .command(COMMANDS.init.CM)
+  .action(async (project) => await initTs(project));
 
 // Frontend
 program
   .command(COMMANDS.frontend.CM)
   .alias('f')
   .description(`Create new ${COMMANDS.frontend.name} File!`)
-  .action((project) => frontend(project));
+  .action(async (project) => await frontend(project));
 
 // Tailwind CSS
 program
@@ -99,6 +91,23 @@ function information() {
 
   // Command
   Object.entries(COMMANDS).forEach(([key, { CM, name }]) =>
-    console.log(`Commands: \t ${NAME} ${CM} \t Create new ${name} File.\n`)
+    console.log(`Commands: \t ${NAME} ${CM} \t Create new ${name}.\n`)
   );
 }
+
+// tsconfig.json
+// program
+//   .command(COMMANDS.tsconfig.CM)
+//   .description(`Create new ${COMMANDS.tsconfig.name} File!`)
+//   .action(() => createTsConfig(COMMANDS.tsconfig.name));
+
+// package.json
+// program
+//   .command(COMMANDS.package.CM)
+//   .description(`Create new ${COMMANDS.package.name} File!`)
+//   .action(() => createPackage(COMMANDS.package.name));
+
+// program
+//   .command(COMMANDS.babel.CM)
+//   .description(`Create new ${COMMANDS.babel.name} File!`)
+//   .action(() => createBabel(COMMANDS.babel.name));

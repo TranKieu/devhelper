@@ -1,7 +1,0 @@
-package-lock.json
-.vscode/
-node_modules/
-.evn
-environment.ts
-bin/
-dist/

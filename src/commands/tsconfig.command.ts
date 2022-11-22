@@ -1,9 +1,10 @@
+import path from 'path';
 import { writeFile } from '../utils/file.utils';
 
-export const createTsConfig = async (fileName: string) => {
+export const createTsConfig = async (dir: string) => {
   const tsconfig = {
     compilerOptions: {
-      target: 'es2015',
+      target: 'es2020',
       module: 'CommonJS',
       sourceMap: true,
       removeComments: true,
@@ -20,14 +21,15 @@ export const createTsConfig = async (fileName: string) => {
       moduleResolution: 'node',
       esModuleInterop: true,
 
-      lib: ['es2018', 'dom'],
+      lib: ['es2020', 'dom'],
       typeRoots: ['node_modules/@types']
     },
     exclude: ['node_modules', './dist']
   };
 
+  const configF = path.resolve(dir, 'tsconfig.json');
   try {
-    await writeFile(fileName, JSON.stringify(tsconfig, undefined, 2));
+    await writeFile(configF, JSON.stringify(tsconfig, undefined, 2));
   } catch (error) {
     console.log(error);
     process.exit(1);

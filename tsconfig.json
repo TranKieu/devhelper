@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "ES2020",
     "module": "CommonJS",
 
     "outDir": "./bin",
@@ -19,11 +19,11 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
 
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
-
-    "lib": ["es2018", "dom"],
+    "skipLibCheck": true,
+    "lib": ["ES2020", "dom"],
     "typeRoots": ["node_modules/@types"]
   },
-  "exclude": ["node_modules", "./dist"]
+  "exclude": ["node_modules", "./bin"]
 }

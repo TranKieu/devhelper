@@ -24,7 +24,7 @@ export const isExists = async (path: string) => {
   try {
     await access(path);
     return true;
-  } catch (error) {
+  } catch (error: any) {
     if (error.code === 'ENOENT') {
       return false;
     } else {

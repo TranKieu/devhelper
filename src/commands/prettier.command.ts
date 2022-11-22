@@ -2,6 +2,7 @@ import * as path from 'path';
 import { writeFile } from '../utils/file.utils';
 
 export const createPrettier = async (project?: string) => {
+  // rule
   const prettier = {
     singleQuote: true,
     trailingComma: 'none',
@@ -12,8 +13,15 @@ export const createPrettier = async (project?: string) => {
     bracketSpacing: true,
     endOfLine: 'lf'
   };
+  // ignore file
   const prettierig =
-    'node_modules\n' + 'dist\n' + '*.md\n' + '*.css\n' + '*.js\n' + '\n';
+    'node_modules\n' +
+    'dist\n' +
+    'bin\n' +
+    '*.md\n' +
+    '*.css\n' +
+    '*.js\n' +
+    '\n';
 
   let prettierFile = '.prettierrc';
   let prettierigFile = '.prettierignore';

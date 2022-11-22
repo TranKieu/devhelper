@@ -1,12 +1,12 @@
 {
   "name": "devhelper",
-  "version": "2.1.0",
+  "version": "2.0.0",
   "description": "DevHelper Tool",
   "main": "src/index.ts",
   "scripts": {
     "build": " npm run clean && npm run compiler && npm run cp:templates ",
     "compiler": "tsc -p .",
-    "clean": "shx rm -rf bin",
+    "clean": "shx rm -rf bin/templates",
     "cp:templates": "shx cp -R src/templates bin/"
   },
   "bin": {
@@ -23,14 +23,13 @@
   },
   "homepage": "https://github.com/TranKieu/devhelper#readme",
   "devDependencies": {
-    "@types/commander": "^2.12.2",
-    "@types/node": "^14.14.41",
-    "shx": "^0.3.3",
-    "typescript": "^4.2.4"
+    "@types/node": "^18.11.9",
+    "shx": "^0.3.4",
+    "typescript": "^4.9.3"
   },
   "dependencies": {
     "chalk": "^4.1.1",
-    "commander": "^6.2.1",
+    "commander": "^9.4.1",
     "package-json": "^6.5.0"
   }
 }
