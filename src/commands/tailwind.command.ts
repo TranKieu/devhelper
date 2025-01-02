@@ -13,9 +13,8 @@ const tailwindArr: Array<string> = [
 ];
 
 const tailwindConfig = {
-  content: ['./public/**/*.{html,js}'],
+  content: ['./public/*.{html,js}'],
 
-  darkMode: false,
   theme: {
     extend: {}
   },
@@ -29,7 +28,7 @@ export const tailwind = async (projectName: string) => {
   /** package */
   const main = 'public/index.html';
   const scripts = {
-    watch: 'tailwindcss -i ./tailwind.css -o ./public/style.css --watch'
+    watch: 'tailwindcss -i ./tailwind.css -o ./public/css/styles.css --watch'
   };
   // build: 'postcss ./src/tailwind.css -o ./public/css/styles.css --verbose',
   // prod: 'postcss ./src/tailwind.css -o ./public/css/styles.css --env production --verbose'
