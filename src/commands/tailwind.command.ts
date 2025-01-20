@@ -13,7 +13,7 @@ const tailwindArr: Array<string> = [
 ];
 
 const tailwindConfig = {
-  content: ['./public/*.{html,js}'],
+  content: ['./public/**/*.{html,js,ts}'],
 
   theme: {
     extend: {}
@@ -57,7 +57,7 @@ export const tailwind = async (projectName: string) => {
   await copyDir(prjTpl, projectName);
 
   // tailwind.config.js
-  const configInhalt =
+  const configInhalt = "/** @type {import('tailwindcss').Config} */"+
     'module.exports =' + JSON.stringify(tailwindConfig, undefined, 2);
   const configFile = path.resolve(projectName, 'tailwind.config.js');
   await writeFile(configFile, configInhalt);
