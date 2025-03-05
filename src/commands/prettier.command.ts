@@ -21,6 +21,8 @@ export const createPrettier = async (project?: string) => {
     '*.md\n' +
     '*.css\n' +
     '*.js\n' +
+    '*.nx\n' +
+    '*.angular\n' +
     '\n';
 
   let prettierFile = '.prettierrc';

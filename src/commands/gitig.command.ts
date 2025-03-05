@@ -4,12 +4,18 @@ import { writeFile } from '../utils/file.utils';
 export const createGitig = async (project?: string) => {
   const gitig =
     'package-lock.json' +
-    '\n.vscode/' +
     '\nnode_modules/' +
     '\n.evn' +
     '\nenvironment.ts' +
+    '\nenvironments' +
     '\nbin/' +
     '\ndist/' +
+    '\n.vscode/*' +
+    '\n!.vscode/extensions.json' +
+    '\n!.vscode/launch.json' +
+    '\n!.vscode/tasks.json' +
+    '\n.nx' +
+    '\n.angular' +
     '\n';
 
   let gitFile = '.gitignore';
