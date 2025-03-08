@@ -22,8 +22,8 @@ const NAME = 'generate';
 const COMMANDS = {
   prettier: { CM: 'prettier', name: '.prettierrc' },
   gitignore: { CM: 'gitig', name: '.gitignore' },
-
   init: { CM: 'init <project>', name: '' },
+
   frontend: { CM: 'front <project>', name: 'FrontEnd-Project' },
   tailwind: { CM: 'tailwind <project>', name: 'TailwindCSS-Start' },
 
