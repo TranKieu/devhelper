@@ -2,9 +2,9 @@ import { createGitig } from './gitig.command';
 import { createPrettier } from './prettier.command';
 import { createTsConfig } from './tsconfig.command';
 import { createPackage } from '../utils/create.package';
-import { isExists, mkDir } from '../utils/file.utils';
+import { isExists, writeFile, mkDir } from '../utils/file.utils';
 import chalk from 'chalk';
-import { mkdir } from 'fs';
+import path from 'path';
 
 export const initTs = async (projectName: string) => {
   /** package */
@@ -25,6 +25,7 @@ export const initTs = async (projectName: string) => {
    * 2. Tạo tsconfig.json
    * 3. Tạo .prettierrc
    * 4. Tạo gitignore
+   * 5. Tạo file: src/index.ts
    */
   if (await isExists(projectName)) {
     console.error(
@@ -37,7 +38,10 @@ export const initTs = async (projectName: string) => {
   console.log();
   console.log('\t Create Project: ', chalk.green.bold(projectName));
   console.log('\t ***************\n');
+
   await mkDir(projectName);
+  await mkDir(path.resolve(projectName, 'src'));
+  await writeFile(path.resolve(projectName, 'src/index.ts'), '');
 
   await createPackage(projectName, main, scripts, devDependencies);
   await createTsConfig(projectName);

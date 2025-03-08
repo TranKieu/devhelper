@@ -9,6 +9,7 @@ import { initTs } from './commands/init.commad';
 import { frontend } from './commands/frontend.command';
 import { createGitig } from './commands/gitig.command';
 import { tailwind } from './commands/tailwind.command';
+import { createGuard } from './commands/guard.command';
 
 /* deprecated */
 // import { createBabel } from './commands/babel.command';
@@ -24,7 +25,9 @@ const COMMANDS = {
 
   init: { CM: 'init <project>', name: '' },
   frontend: { CM: 'front <project>', name: 'FrontEnd-Project' },
-  tailwind: { CM: 'tailwind <project>', name: 'TailwindCSS-Start' }
+  tailwind: { CM: 'tailwind <project>', name: 'TailwindCSS-Start' },
+
+  guard: { CM: 'guard <name>', name: 'Angular Guard' }
 };
 
 /**
@@ -37,14 +40,22 @@ const program = new Command();
 program
   .version(VERSION)
   .name(NAME)
-  .description('Helper')
+  .description('Develope Helper')
   .arguments('<command>')
   .action((command) => {
     console.log('Command %s does not exits!', chalk.red.bold(command));
     information();
   });
-
 // Commands
+
+// guard
+program
+  .command(COMMANDS.guard.CM)
+  .alias('g')
+  .description(`Create new ${COMMANDS.guard.name} File!`)
+  .action((pathfile) => createGuard(pathfile));
+
+// prettier
 program
   .command(COMMANDS.prettier.CM)
   .alias('p')
@@ -91,7 +102,7 @@ function information() {
 
   // Command
   Object.entries(COMMANDS).forEach(([key, { CM, name }]) =>
-    console.log(`Commands: \t ${NAME} ${CM} \t Create new ${name}.\n`)
+    console.log(`Commands:  ${NAME} ${CM} \t Create new ${name}.\n`)
   );
 }
 

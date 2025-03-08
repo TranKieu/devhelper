@@ -85,3 +85,17 @@ export const copyDir = async (src: string, dest: string) => {
     process.exit(1); // kết thúc chương trình
   }
 };
+
+/** đưa tên file thành tên
+ * guardName('is-login'); // IsLoginGuard
+ */
+export function guard(str: string): string {
+  return (
+    str.replace(
+      /(-)+(.)?/g,
+      (_match: string, _separator: string, chr: string) => {
+        return chr.toUpperCase();
+      }
+    ) + 'Guard'
+  );
+}
