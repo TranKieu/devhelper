@@ -89,7 +89,7 @@ export const copyDir = async (src: string, dest: string) => {
 /** đưa tên file thành tên
  * guardName('is-login'); // IsLoginGuard
  */
-export function guard(str: string): string {
+export function createGuardName(str: string): string {
   return (
     str.replace(
       /(-)+(.)?/g,

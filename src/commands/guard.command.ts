@@ -1,8 +1,13 @@
 import path from 'path';
-import { writeFile, isExists, guard, mkDir } from '../utils/file.utils';
+import {
+  writeFile,
+  isExists,
+  createGuardName,
+  mkDir
+} from '../utils/file.utils';
 import chalk from 'chalk';
 
-export const createGuard = async (fpad: string) => {
+export const createGuard = async (fpad: string, options = 'active') => {
   const guardfile = fpad + '.guard.ts';
 
   if (await isExists(guardfile)) {
@@ -15,22 +20,66 @@ export const createGuard = async (fpad: string) => {
   if (guardPath !== '.') {
     await mkDir(guardPath);
   }
-  const guardName = path.basename(fpad);
+  const guardName = createGuardName(path.basename(fpad));
 
-  const guardContent = `
-  const ${guard(guardName)}: CanActivateFn = (): boolean | UrlTree => {
-  
-  const Service = inject(Service);
-  const router = inject(Router);
-
-  return Service. || router.createUrlTree([ ])
-}
-`;
+  let content = '';
+  switch (options) {
+    case 'macht':
+      content = canMacht(guardName);
+      break;
+    case 'deactivate':
+      content = canDeactivate(guardName);
+      break;
+    default:
+      content = canActivate(guardName);
+      break;
+  }
 
   try {
-    await writeFile(guardfile, guardContent);
+    await writeFile(guardfile, content);
   } catch (error) {
     console.log(error);
     process.exit(1);
   }
+};
+
+const canActivate = (guardName: string) => {
+  return `
+  export const ${guardName}: CanActivateFn = (
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+    ): boolean | UrlTree | Observable<boolean> => {
+  
+      const Service = inject(Service);
+      const router = inject(Router);
+  
+      return Service. || router.createUrlTree([ ])
+    }`;
+};
+const canMacht = (guardName: string) => {
+  return ` 
+  export const ${guardName}: CanMatchFn = (
+    next: Route,
+    segments: UrlSegment[]
+    ): boolean | UrlTree | Observable<boolean> => {
+        
+      const Service = inject(Service);
+      const router = inject(Router);
+  
+      return Service. || router.createUrlTree([ ])
+  }`;
+};
+
+const canDeactivate = (guardName: string) => {
+  return ` 
+  export const ${guardName}: CanDeactivateFn<T> = (
+      component: T,
+      currentRoute: ActivatedRouteSnapshot,
+      currentState: RouterStateSnapshot,
+      nextState: RouterStateSnapshot,
+    ): boolean | UrlTree | Observable<boolean> => {
+          
+      return of(true);
+  }
+  `;
 };

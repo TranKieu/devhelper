@@ -27,7 +27,7 @@ const COMMANDS = {
   frontend: { CM: 'front <project>', name: 'FrontEnd-Project' },
   tailwind: { CM: 'tailwind <project>', name: 'TailwindCSS-Start' },
 
-  guard: { CM: 'guard <name>', name: 'Angular Guard' }
+  guard: { CM: 'guard <name> [macht|deactivate]', name: 'Angular Guard' }
 };
 
 /**
@@ -53,7 +53,7 @@ program
   .command(COMMANDS.guard.CM)
   .alias('g')
   .description(`Create new ${COMMANDS.guard.name} File!`)
-  .action((pathfile) => createGuard(pathfile));
+  .action((pathfile, options) => createGuard(pathfile, options));
 
 // prettier
 program
