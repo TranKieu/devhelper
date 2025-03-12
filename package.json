@@ -1,6 +1,6 @@
 {
   "name": "devhelper",
-  "version": "2.0.0",
+  "version": "2.3.2",
   "description": "DevHelper Tool",
   "main": "src/index.ts",
   "scripts": {
